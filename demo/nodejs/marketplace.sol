@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.4.11;
 
 contract Marketplace {
 
@@ -19,8 +19,13 @@ contract Marketplace {
         _;
     }
 
-    constructor(string productName, uint productPrice) public {
-        product = Product(msg.sender, productName, productPrice, false);
+    function Marketplace(string productName, uint productPrice) public {
+        product = Product({
+            owner: msg.sender,
+            name: productName,
+            price: productPrice,
+            sold: false
+        });
     }
 
     function buy() public payable {
