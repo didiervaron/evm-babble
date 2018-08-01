@@ -22,3 +22,5 @@ docker/evm-babble-ui/package.json
 
 state/test_data/eth/chaindata
 
+.idea
+
