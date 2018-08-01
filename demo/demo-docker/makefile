@@ -22,7 +22,7 @@ stop:
 
 demo: 
 	./scripts/demo.sh $(nodes) 8080 \
-		"$(shell pwd)/../nodejs/crowd-funding.sol" \
+		"$(shell pwd)/../nodejs/marketplace.sol" \
 		"$(shell pwd)/conf/keystore" \
 		"$(shell pwd)/conf/pwd.txt"
 
