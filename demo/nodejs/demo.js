@@ -209,7 +209,7 @@ deployContract = function (from, contractFile, contractName, args) {
 
 //------------------------------------------------------------------------------
 
-buy = function (from, wei_amount) {
+buy = function (from) {
     callData = _mpContract.w3.buy.getData();
     log(FgMagenta, util.format('buy() callData: %s', callData));
 
@@ -218,7 +218,7 @@ buy = function (from, wei_amount) {
         to: _mpContract.address,
         gaz: 1000000,
         gazPrice: 0,
-        value: wei_amount,
+        value: 0,
         data: callData
     };
     stx = JSONbig.stringify(tx);
@@ -312,10 +312,10 @@ init()
     })
     .then(() => explain("Notice how the balances of node1 and node2 have changed."))
 
-    .then(() => step("STEP 6) Deploy a CrowdFunding SmartContract for 1000 wei"))
+    .then(() => step("STEP 6) Deploy a Marketplace SmartContract for 10000 wei"))
     .then(() => {
         space();
-        return deployContract(_demoNodes[0], _contractFile, 'CrowdFunding', [1000])
+        return deployContract(_demoNodes[0], _contractFile, 'Marketplace', [10000])
     })
     .then((contract) => {
         return new Promise((resolve) => {
@@ -324,7 +324,7 @@ init()
         })
     })
     .then(() => explain(
-        "Here we compiled and deployed the CrowdFunding SmartContract. \n" +
+        "Here we compiled and deployed the Marketplace SmartContract. \n" +
         "The contract was written in the high-level Solidity language which compiles \n" +
         "down to EVM bytecode. To deploy the SmartContract we created an EVM transaction \n" +
         "with a 'data' field containing the bytecode. After going through consensus, the \n" +
@@ -332,10 +332,10 @@ init()
         "the same code with the same data."
     ))
 
-    .then(() => step("STEP 7) Contribute 499 wei from node 2"))
+    .then(() => step("STEP 7) Make node2 buy product from node1"))
     .then(() => {
         space();
-        return contribute(_demoNodes[1], 499);
+        return contribute(_demoNodes[1]);
     })
     .then(() => explain(
         "We created an EVM transaction to call the 'contribute' method of the SmartContract. \n" +

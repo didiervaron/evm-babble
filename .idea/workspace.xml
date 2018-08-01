@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bda85078-7dd4-4090-b475-fe097257d34b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/demo/nodejs/crowd-funding.sol" beforeDir="false" afterPath="$PROJECT_DIR$/demo/nodejs/marketplace.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/nodejs/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/demo/nodejs/demo.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +20,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="js" value="1" />
+          <entry key="js" value="2" />
           <entry key="json" value="1" />
           <entry key="sol" value="1" />
         </counts>
@@ -29,19 +28,19 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="1" />
+          <entry key="JavaScript" value="2" />
           <entry key="Solidity file" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="166" />
+          <entry key="js" value="306" />
           <entry key="sol" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="166" />
+          <entry key="JavaScript" value="306" />
           <entry key="Solidity file" value="1" />
         </counts>
       </usages-collector>
@@ -52,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demo/nodejs/demo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="211" column="34" selection-start-line="211" selection-start-column="34" selection-end-line="211" selection-end-column="34" />
+            <state relative-caret-position="378">
+              <caret line="219" column="20" lean-forward="true" selection-start-line="219" selection-start-column="20" selection-end-line="219" selection-end-column="20" />
               <folding>
                 <element signature="e#614#660#0" />
                 <element signature="e#689#874#0" />
@@ -69,8 +68,6 @@
                 <element signature="e#3134#3520#0" />
                 <element signature="e#3145#3250#0" />
                 <element signature="e#3568#4318#0" />
-                <element signature="e#4386#5339#0" />
-                <element signature="e#5463#6517#0" />
                 <element signature="e#8279#8359#0" />
               </folding>
             </state>
@@ -186,7 +183,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32923833" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32923833" />
@@ -218,10 +215,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/demo/nodejs/contract-lite.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-367" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/demo/nodejs/demo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="211" column="34" selection-start-line="211" selection-start-column="34" selection-end-line="211" selection-end-column="34" />
+        <state relative-caret-position="378">
+          <caret line="219" column="20" lean-forward="true" selection-start-line="219" selection-start-column="20" selection-end-line="219" selection-end-column="20" />
           <folding>
             <element signature="e#614#660#0" />
             <element signature="e#689#874#0" />
@@ -237,8 +239,6 @@
             <element signature="e#3134#3520#0" />
             <element signature="e#3145#3250#0" />
             <element signature="e#3568#4318#0" />
-            <element signature="e#4386#5339#0" />
-            <element signature="e#5463#6517#0" />
             <element signature="e#8279#8359#0" />
           </folding>
         </state>
