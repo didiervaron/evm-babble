@@ -30,8 +30,8 @@ contract Marketplace {
 
     function buy() public payable {
         product.owner.transfer(product.price);
-        emit Buy(msg.sender);
+        Buy(msg.sender);
         product.sold = true;
-        emit Sold(true);
+        Sold(true);
     }
 }
