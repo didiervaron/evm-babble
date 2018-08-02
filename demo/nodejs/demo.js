@@ -310,10 +310,10 @@ init()
     })
     .then(() => explain("Notice how the balances of node1 and node2 have changed."))
 
-    .then(() => step("STEP 6) Deploy a Product SmartContract for 10000 wei with a value of 1111 wei"))
+    .then(() => step("STEP 6) Deploy a Product SmartContract for 1111 wei"))
     .then(() => {
         space();
-        return deployContract(_demoNodes[0], _contractFile, 'Product', [10000])
+        return deployContract(_demoNodes[0], _contractFile, 'Product', ["MacBook Pro"])
     })
     .then((contract) => {
         return new Promise((resolve) => {
