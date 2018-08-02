@@ -1,37 +1,29 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.23;
 
-contract Marketplace {
+contract Product {
 
-    struct Product {
-        address owner;
+    address owner;
+
+    struct product {
         string name;
-        uint price;
-        bool sold;
+        uint256 price;
     }
 
-    Product product;
+    mapping (address => product) products;
 
     event Sold(bool sold);
     event Buy(address buyer);
 
-    modifier ownerFunction {
-        require(product.owner == msg.sender);
-        _;
-    }
-
-    function Marketplace(string productName, uint productPrice) public {
-        product = Product({
-            owner: msg.sender,
-            name: productName,
-            price: productPrice,
-            sold: false
-        });
+    constructor(string _name) public payable {
+        owner = msg.sender;
+        products[owner].name = _name;
+        products[owner].price = msg.value;
     }
 
     function buy() public payable {
-        product.owner.transfer(product.price);
-        Buy(msg.sender);
-        product.sold = true;
-        Sold(true);
+        owner.transfer(products[owner].price);
+        emit Sold(true);
+        emit Buy(msg.sender);
     }
+
 }
