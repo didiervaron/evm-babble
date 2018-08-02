@@ -210,10 +210,10 @@ deployContract = function (from, contractFile, contractName, args) {
 //------------------------------------------------------------------------------
 
 buy = function (from) {
-    callData = _mpContract.w3.buy.getData();
+    let callData = _mpContract.w3.buy.getData();
     log(FgMagenta, util.format('buy() callData: %s', callData));
 
-    tx = {
+    let tx = {
         from: from.accounts[0].address,
         to: _mpContract.address,
         gaz: 1000000,
@@ -221,7 +221,7 @@ buy = function (from) {
         value: 0,
         data: callData
     };
-    stx = JSONbig.stringify(tx);
+    let stx = JSONbig.stringify(tx);
     log(FgBlue, 'Sending Contract-Method Tx: ' + stx);
 
     return from.api.sendTx(stx).then((res) => {
@@ -335,54 +335,14 @@ init()
     .then(() => step("STEP 7) Make node2 buy product from node1"))
     .then(() => {
         space();
-        return contribute(_demoNodes[1]);
+        return buy(_demoNodes[1]);
     })
     .then(() => explain(
-        "We created an EVM transaction to call the 'contribute' method of the SmartContract. \n" +
-        "The 'value' field of the transaction is the amount that the caller is actually \n" +
-        "going to contribute. The operation would fail if the account did not have enough Ether. \n" +
-        "As an exercise you can check that the transaction was run through every Babble \n" +
-        "node and that node2's balance has changed."
+        "We created an EVM transaction to call the 'buy' method of the SmartContract. \n" +
+        "The operation would fail if the account did not have enough Ether. As an exercise you " +
+        "can check that the transaction was run through every Babble node and that node2's " +
+        "balance has changed."
     ))
-
-    .then(() => step("STEP 8) Check goal reached"))
-    .then(() => {
-        space();
-        return checkGoalReached(_demoNodes[0]);
-    })
-    .then(() => explain(
-        "Here we called another method of the SmartContract to check if the funding goal \n" +
-        "was met. Since only 499 of 1000 were received, the answer is no."
-    ))
-
-    .then(() => step("STEP 9) Contribute 501 wei from node 3"))
-    .then(() => {
-        space();
-        return contribute(_demoNodes[2], 501);
-    })
-
-    .then(() => step("STEP 10) Check goal reached"))
-    .then(() => {
-        space();
-        return checkGoalReached(_demoNodes[0]);
-    })
-    .then(() => explain("This time the funding goal was reached."))
-
-    .then(() => step("STEP 11) Settle"))
-    .then(() => {
-        space();
-        return settle(_demoNodes[0]);
-    })
-    .then(() => explain("The funds were transferred from the SmartContract to node1."))
-
-    .then(() => step("STEP 12) Check balances again"))
-    .then(() => {
-        space();
-        return getControlledAccounts();
-    })
-    .then(() => explain(
-        "Nodes 2 and 3 spent 499 and 501 wei respectively while node1 received 1000 wei."))
-
     .catch((err) => log(FgRed, err));
 
 //------------------------------------------------------------------------------
