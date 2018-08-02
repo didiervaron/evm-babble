@@ -2,10 +2,12 @@ pragma solidity ^0.4.11;
 
 contract Product {
 
+    // can add functionality to add more products but for testing purposes - I've kept it simple.
+
     address owner;
 
     struct product {
-//        string name;
+        string name;
         uint256 price;
     }
 
@@ -14,9 +16,9 @@ contract Product {
     event Sold(bool sold);
     event Buy(address buyer, address seller);
 
-    function Product() public payable {
+    function Product(string _name) public payable {
         owner = msg.sender;
-//        products[owner].name = _name;
+        products[owner].name = _name;
         products[owner].price = msg.value;
     }
 
