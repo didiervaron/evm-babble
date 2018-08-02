@@ -4,7 +4,7 @@ set -eu
 
 N=${1:-4}
 PORT=${2:-8080}
-SOL_FILE=${3:-"../nodejs/crowd-funding.sol"}
+SOL_FILE=${3:-"../nodejs/product.sol"}
 KEY_DIR=${4:-"conf/keystore"}
 PWD_FILE=${5:-"conf/pwd.txt"}
 
