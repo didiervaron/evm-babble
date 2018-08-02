@@ -182,6 +182,7 @@ deployContract = function (from, contractFile, contractName, args) {
         from: from.accounts[0].address,
         gas: 1000000,
         gasPrice: 0,
+        value: 1111,
         data: contract.bytecode + constructorParams
     };
 
@@ -309,7 +310,7 @@ init()
     })
     .then(() => explain("Notice how the balances of node1 and node2 have changed."))
 
-    .then(() => step("STEP 6) Deploy a Product SmartContract for 10000 wei"))
+    .then(() => step("STEP 6) Deploy a Product SmartContract for 10000 wei with a value of 1111 wei"))
     .then(() => {
         space();
         return deployContract(_demoNodes[0], _contractFile, 'Product', [10000])
