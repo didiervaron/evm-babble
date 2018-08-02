@@ -173,25 +173,24 @@ transferRaw = function (api, from, to, amount) {
 };
 
 deployContract = function (from, contractFile, contractName, args) {
-    contract = new Contract(contractFile, contractName);
+    let contract = new Contract(contractFile, contractName);
     contract.compile();
 
-    var constructorParams = contract.encodeConstructorParams(args);
+    let constructorParams = contract.encodeConstructorParams(args);
 
-    tx = {
+    let tx = {
         from: from.accounts[0].address,
         gas: 1000000,
         gasPrice: 0,
         data: contract.bytecode + constructorParams
     };
 
-    stx = JSONbig.stringify(tx);
+    let stx = JSONbig.stringify(tx);
     log(FgMagenta, 'Sending Contract-Creation Tx: ' + stx);
 
     return from.api.sendTx(stx).then((res) => {
         log(FgGreen, 'Response: ' + res);
-        txHash = JSONbig.parse(res).txHash.replace("\"", "");
-        return txHash;
+        return JSONbig.parse(res).txHash.replace("\"", "");
     })
         .then((txHash) => {
             return sleep(2000).then(() => {
@@ -201,8 +200,7 @@ deployContract = function (from, contractFile, contractName, args) {
         })
         .then((receipt) => {
             log(FgGreen, 'Tx Receipt: ' + receipt);
-            address = JSONbig.parse(receipt).contractAddress;
-            contract.address = address;
+            contract.address = JSONbig.parse(receipt).contractAddress;
             return contract;
         })
 };
@@ -210,10 +208,10 @@ deployContract = function (from, contractFile, contractName, args) {
 //------------------------------------------------------------------------------
 
 buy = function (from) {
-    callData = _mpContract.w3.buy.getData();
+    let callData = _mpContract.w3.buy.getData();
     log(FgMagenta, util.format('buy() callData: %s', callData));
 
-    tx = {
+    let tx = {
         from: from.accounts[0].address,
         to: _mpContract.address,
         gaz: 1000000,
@@ -221,13 +219,12 @@ buy = function (from) {
         value: 0,
         data: callData
     };
-    stx = JSONbig.stringify(tx);
+    let stx = JSONbig.stringify(tx);
     log(FgBlue, 'Sending Contract-Method Tx: ' + stx);
 
     return from.api.sendTx(stx).then((res) => {
         log(FgGreen, 'Response: ' + res);
-        txHash = JSONbig.parse(res).txHash.replace("\"", "");
-        return txHash;
+        return JSONbig.parse(res).txHash.replace("\"", "");
     })
         .then((txHash) => {
             return sleep(2000).then(() => {
