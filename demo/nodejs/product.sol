@@ -5,7 +5,7 @@ contract Product {
     address owner;
 
     struct product {
-        string name;
+//        string name;
         uint256 price;
     }
 
@@ -14,9 +14,9 @@ contract Product {
     event Sold(bool sold);
     event Buy(address buyer, address seller);
 
-    function Product(string _name) public payable {
+    function Product() public payable {
         owner = msg.sender;
-        products[owner].name = _name;
+//        products[owner].name = _name;
         products[owner].price = msg.value;
     }
 
