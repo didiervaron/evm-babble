@@ -172,40 +172,39 @@ transferRaw = function (api, from, to, amount) {
 
 };
 
-deployContract = function(from, contractFile, contractName, args) {
-    contract = new Contract(contractFile, contractName);
+deployContract = function (from, contractFile, contractName, args) {
+    let contract = new Contract(contractFile, contractName);
     contract.compile();
 
-    var constructorParams = contract.encodeConstructorParams(args);
+    let constructorParams = contract.encodeConstructorParams(args);
 
-    tx = {
+    let tx = {
         from: from.accounts[0].address,
         gas: 1000000,
         gasPrice: 0,
+        value: 1111,
         data: contract.bytecode + constructorParams
     };
 
-    stx = JSONbig.stringify(tx);
+    let stx = JSONbig.stringify(tx);
     log(FgMagenta, 'Sending Contract-Creation Tx: ' + stx);
 
-    return from.api.sendTx(stx).then( (res) => {
+    return from.api.sendTx(stx).then((res) => {
         log(FgGreen, 'Response: ' + res);
-        txHash = JSONbig.parse(res).txHash.replace("\"", "");
-        return txHash;
+        return JSONbig.parse(res).txHash.replace("\"", "");
     })
-        .then( (txHash) => {
+        .then((txHash) => {
             return sleep(2000).then(() => {
                 log(FgBlue, 'Requesting Receipt');
                 return from.api.getReceipt(txHash);
             })
         })
-        .then( (receipt) => {
+        .then((receipt) => {
             log(FgGreen, 'Tx Receipt: ' + receipt);
-            address = JSONbig.parse(receipt).contractAddress;
-            contract.address = address;
+            contract.address = JSONbig.parse(receipt).contractAddress;
             return contract;
         })
-}
+};
 
 //------------------------------------------------------------------------------
 
