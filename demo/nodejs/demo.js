@@ -343,6 +343,13 @@ init()
         "can check that the transaction was run through every Babble node and that node2's " +
         "balance has changed."
     ))
+    .then(() => step("STEP 8) Check balances again"))
+    .then(() => {
+        space();
+        return getControlledAccounts();
+    })
+    .then(() => explain("Notice how the balances of node1 increased and node2 decreased."))
+
     .catch((err) => log(FgRed, err));
 
 //------------------------------------------------------------------------------
