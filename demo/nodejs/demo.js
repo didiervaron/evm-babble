@@ -315,7 +315,7 @@ init()
     .then(() => step("STEP 6) Deploy a Product SmartContract for 1111 wei"))
     .then(() => {
         space();
-        return deployContract(_demoNodes[0], _contractFile, 'Product', ["MacBook Pro"])
+        return deployContract(_demoNodes[0], _contractFile, 'Product', [])
     })
     .then((contract) => {
         return new Promise((resolve) => {
