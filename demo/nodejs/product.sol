@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.11;
 
 contract Product {
 
@@ -14,7 +14,7 @@ contract Product {
     event Sold(bool sold);
     event Buy(address buyer);
 
-    constructor(string _name) public payable {
+    function Product(string _name) public payable {
         owner = msg.sender;
         products[owner].name = _name;
         products[owner].price = msg.value;
@@ -22,8 +22,8 @@ contract Product {
 
     function buy() public payable {
         owner.transfer(products[owner].price);
-        emit Sold(true);
-        emit Buy(msg.sender);
+        Sold(true);
+        Buy(msg.sender);
     }
 
 }

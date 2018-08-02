@@ -59,7 +59,7 @@ function DemoNode(name, host, port) {
 //------------------------------------------------------------------------------
 
 let _demoNodes = [];
-let _contractFile = 'marketplace.sol';
+let _contractFile = 'product.sol';
 let _mpContract;
 let _keystore = 'keystore';
 let _pwdFile = 'pwd.txt';
@@ -312,10 +312,10 @@ init()
     })
     .then(() => explain("Notice how the balances of node1 and node2 have changed."))
 
-    .then(() => step("STEP 6) Deploy a Marketplace SmartContract for 10000 wei"))
+    .then(() => step("STEP 6) Deploy a Product SmartContract for 10000 wei"))
     .then(() => {
         space();
-        return deployContract(_demoNodes[0], _contractFile, 'Marketplace', [10000])
+        return deployContract(_demoNodes[0], _contractFile, 'Product', [10000])
     })
     .then((contract) => {
         return new Promise((resolve) => {
