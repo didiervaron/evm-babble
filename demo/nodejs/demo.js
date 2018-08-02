@@ -182,7 +182,7 @@ deployContract = function (from, contractFile, contractName, args) {
         from: from.accounts[0].address,
         gas: 1000000,
         gasPrice: 0,
-        // value: 1111,
+        value: 1111,
         data: contract.bytecode + constructorParams
     };
 
@@ -191,7 +191,8 @@ deployContract = function (from, contractFile, contractName, args) {
 
     return from.api.sendTx(stx).then((res) => {
         log(FgGreen, 'Response: ' + res);
-        return JSONbig.parse(res).txHash.replace("\"", "");
+        let txHash = JSONbig.parse(res).txHash.replace("\"", "");
+        return txHash;
     })
         .then((txHash) => {
             return sleep(2000).then(() => {
@@ -201,7 +202,8 @@ deployContract = function (from, contractFile, contractName, args) {
         })
         .then((receipt) => {
             log(FgGreen, 'Tx Receipt: ' + receipt);
-            contract.address = JSONbig.parse(receipt).contractAddress;
+            let address = JSONbig.parse(receipt).contractAddress;
+            contract.address = address;
             return contract;
         })
 };
