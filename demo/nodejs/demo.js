@@ -210,10 +210,10 @@ deployContract = function (from, contractFile, contractName, args) {
 //------------------------------------------------------------------------------
 
 buy = function (from) {
-    let callData = _mpContract.w3.buy.getData();
+    callData = _mpContract.w3.buy.getData();
     log(FgMagenta, util.format('buy() callData: %s', callData));
 
-    let tx = {
+    tx = {
         from: from.accounts[0].address,
         to: _mpContract.address,
         gaz: 1000000,
@@ -221,7 +221,7 @@ buy = function (from) {
         value: 0,
         data: callData
     };
-    let stx = JSONbig.stringify(tx);
+    stx = JSONbig.stringify(tx);
     log(FgBlue, 'Sending Contract-Method Tx: ' + stx);
 
     return from.api.sendTx(stx).then((res) => {
