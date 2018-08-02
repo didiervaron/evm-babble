@@ -12,7 +12,7 @@ contract Product {
     mapping (address => product) products;
 
     event Sold(bool sold);
-    event Buy(address buyer, address seller);
+    event Buy(address buyer);
 
     function Product(string _name) public payable {
         owner = msg.sender;
@@ -23,7 +23,7 @@ contract Product {
     function buy() public payable {
         owner.transfer(products[owner].price);
         Sold(true);
-        Buy(msg.sender, owner);
+        Buy(msg.sender);
     }
 
 }

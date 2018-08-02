@@ -182,7 +182,7 @@ deployContract = function (from, contractFile, contractName, args) {
         from: from.accounts[0].address,
         gas: 1000000,
         gasPrice: 0,
-        // value: 1111,
+        value: 1111,
         data: contract.bytecode + constructorParams
     };
 
