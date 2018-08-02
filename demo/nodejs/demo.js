@@ -182,7 +182,7 @@ deployContract = function (from, contractFile, contractName, args) {
         from: from.accounts[0].address,
         gas: 1000000,
         gasPrice: 0,
-        value: 1111,
+        // value: 1111,
         data: contract.bytecode + constructorParams
     };
 
@@ -322,7 +322,7 @@ init()
         })
     })
     .then(() => explain(
-        "Here we compiled and deployed the Marketplace SmartContract. \n" +
+        "Here we compiled and deployed the Product SmartContract. \n" +
         "The contract was written in the high-level Solidity language which compiles \n" +
         "down to EVM bytecode. To deploy the SmartContract we created an EVM transaction \n" +
         "with a 'data' field containing the bytecode. After going through consensus, the \n" +
